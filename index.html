@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>您的專屬京都之旅</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+      body {
+        font-family: 'Noto Sans TC', sans-serif;
+      }
+      h1, h2, h3, .font-display {
+        font-family: 'Playfair Display', serif;
+      }
+      /* Combined Print and PDF Export Styles */
+      @media print, .pdf-export-mode {
+        body {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+          font-size: 10pt;
+          background: #fff !important;
+        }
+
+        /* Hide non-essential elements */
+        .no-print {
+          display: none !important;
+        }
+
+        /* Ensure all content sections are visible for capture */
+        .printable-content > div {
+          display: block !important;
+        }
+        
+        main {
+          margin-top: 0 !important;
+          padding: 1.5rem !important;
+        }
+        
+        /* Reset most visual flair for clarity */
+        .shadow-lg, .shadow-md, .shadow-xl, .shadow-sm, .shadow-inner, [class*="bg-gradient-to-"] {
+          box-shadow: none !important;
+          background-image: none !important;
+        }
+        [class*="backdrop-"] { backdrop-filter: none !important; }
+        .transition-all, .transition-transform { transition: none !important; }
+        .transform, .hover\:scale-105, .hover\:-translate-y-1 { transform: none !important; }
+
+        /* Add subtle borders for structure */
+        .day-card, .place-card, .info-card {
+            border: 1px solid #e5e7eb !important;
+        }
+        .border-l-4 { border-left-width: 4px !important; }
+        
+        /* Selective color overrides for readability */
+        .text-stone-800, .text-stone-900, .text-stone-700 { color: #1c1917 !important; }
+        .text-stone-600, .text-stone-500 { color: #44403c !important; }
+        .text-rose-800, .text-rose-700, .text-rose-600, .text-rose-500 { color: #9f1239 !important; }
+        .text-amber-800 { color: #92400e !important; }
+        .text-teal-600 { color: #0d9488 !important; }
+
+        /* Preserve important background colors */
+        .bg-rose-100 { background-color: #ffe4e6 !important; }
+        .bg-amber-100 { background-color: #fef3c7 !important; }
+        .bg-teal-100 { background-color: #ccfbf1 !important; }
+        .bg-rose-50 { background-color: #fff1f2 !important; }
+        .bg-amber-50 { background-color: #fffbeb !important; }
+        
+        /* Make other backgrounds transparent to save ink */
+        [class*="bg-"]:not(.bg-rose-100):not(.bg-amber-100):not(.bg-teal-100):not(.bg-rose-50):not(.bg-amber-50):not(.bg-white) {
+           background-color: transparent !important;
+        }
+
+        /* Ensure links are visible and identifiable */
+        a { text-decoration: underline !important; color: #0ea5e9 !important; }
+        a[href*="maps.google.com"] { text-decoration: none !important; }
+        a[href*="maps.google.com"]::after {
+            content: " (地圖連結)";
+            font-size: 8pt;
+            font-weight: normal;
+        }
+
+        /* Layout adjustments for single-column booklet format */
+        [class*="grid-cols-"], [class*="lg:grid-cols-"], [class*="md:grid-cols-"] {
+            grid-template-columns: 1fr !important;
+        }
+        
+        /* Title size adjustment for PDF aesthetics */
+        .day-card h3 {
+          font-size: 1.5rem !important; /* from text-3xl to text-2xl */
+          line-height: 2rem !important;
+        }
+
+        /* Page break control for better document flow */
+        .day-card, 
+        #food-guide-section > section, 
+        #practical-info-section, 
+        #budget-overview-section {
+          page-break-before: always; /* Each major section starts a new page */
+        }
+        
+        /* The first day card shouldn't have a break before it. */
+        .grid > .day-card:first-of-type {
+          page-break-before: auto;
+        }
+        
+        /* Attempt to prevent elements from being split across pages. This is a hint for html2canvas. */
+        .day-card, 
+        #food-guide-section > section,
+        .place-card, 
+        .info-card,
+        .day-card .space-y-4 > div { /* Targets ActivityItem */
+             page-break-inside: avoid;
+        }
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "chart.js/": "https://aistudiocdn.com/chart.js@^4.5.1/",
+    "chart.js": "https://aistudiocdn.com/chart.js@^4.5.1",
+    "html2canvas": "https://aistudiocdn.com/html2canvas@^1.4.1",
+    "jspdf": "https://aistudiocdn.com/jspdf@^2.5.1"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-BS3qveRg.js"></script>
+</head>
+  <body class="bg-gray-50 text-stone-800">
+    <div id="root"></div>
+  </body>
+</html>
